@@ -30,7 +30,7 @@ class Grid:
         self.cells = self._create_empty_cells()
 
         self.mine_count = (self.width * self.height) // 4
-        self._set_cell_mine_and_adjacent_counts()
+        self._set_cell_mines_and_adjacent_counts()
 
     def has_unopened_non_mines(self):
         for row in self.cells:
@@ -45,7 +45,7 @@ class Grid:
     
     def _set_cell_mines_and_adjacent_counts(self):
         coordinate_positions = self._generate_grid_coordinate_positions()
-        mine_positions = self._generate_mine_positions()
+        mine_positions = self._generate_mine_positions(coordinate_positions)
         self._place_mines(mine_positions)
         non_mine_positions = self._identify_non_mine_positions(coordinate_positions, mine_positions)
         self._set_adjacent_mine_count(non_mine_positions)
@@ -88,8 +88,8 @@ class Grid:
         return self.cells[coordinate.row][coordinate.column].has_mine
     
 class Minesweeper:
-    def __init__(self, widht, height):
-        self.grid = Grid(widht, height)
+    def __init__(self, width, height):
+        self.grid = Grid(width, height)
 
     def _get_valid_coordinate(self, plane:str, max_index:int) -> int:
         prompt_str = f'Enter zero-index {plane}-coordinate between 0 and {max_index}: '
