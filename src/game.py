@@ -79,7 +79,8 @@ class Grid:
     def print(self):
         for row in self.cells:
             visible_row = [str(cell) for cell in row]
-            print(' '.join(visible_row))
+            # print(' '.join(visible_row))
+            print(visible_row)
 
     def _is_cell_opened(self, row_index:int, column_index:int) -> bool:
         return self.cells[row_index][column_index].is_open
