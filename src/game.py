@@ -98,12 +98,12 @@ class Minesweeper:
             try:
                 coordinate = int(input(prompt))
             except ValueError:
-                print('Invalid input. please enter a valid value.')
+                print('Invalid input. Please enter a valid value.')
             else:
                 if 0 <= coordinate <= max_index:
                     return coordinate
                 else:
-                    print(f'Invalid inpu. Please enter a number between 0 and {max_index}')
+                    print(f'Invalid input. Please enter a number between 0 and {max_index}')
 
     def _get_user_guess(self) -> Coordinate:
         while True:
@@ -116,7 +116,7 @@ class Minesweeper:
             row_index = self._get_valid_coordinate(plane = 'y', max_index=max_col_index)
 
             if self.grid._is_cell_opened(row_index = row_index, column_index=column_index):
-                print('Invalid input. the cell is already opnened.')
+                print('Invalid input. The cell is already opened.')
             else:
                 return Coordinate(row_index, column_index)
     
