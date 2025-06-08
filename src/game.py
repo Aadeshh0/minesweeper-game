@@ -74,11 +74,12 @@ class Grid:
                 for column_index in range(empty_column_index-1, empty_column_index+2):
                     if self._is_valid_position(row_index, column_index) and self.cells[row_index][column_index].has_mine:
                         count += 1
-            self.cells[empty_row_index][empty_column_index].adjacent_mines_count = count
+            self.cells[empty_row_index][empty_column_index].adjacent_mine_count = count
 
     def print(self):
         for row in self.cells:
             visible_row = [str(cell) for cell in row]
+            # print(' '.join(visible_row))
             print(visible_row)
 
     def _is_cell_opened(self, row_index:int, column_index:int) -> bool:
