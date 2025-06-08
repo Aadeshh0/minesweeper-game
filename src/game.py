@@ -92,8 +92,7 @@ class Minesweeper:
         self.grid = Grid(width, height)
 
     def _get_valid_coordinate(self, plane:str, max_index:int) -> int:
-        prompt_str = f'Enter zero-index {plane}-coordinate between 0 and {max_index}: '
-        prompt = prompt_str.format(plane = plane, max_index = max_index)
+        prompt = f'Enter zero-index {plane}-coordinate between 0 and {max_index}: '
 
         while True:
             try:
@@ -110,8 +109,8 @@ class Minesweeper:
         while True:
             print("Try to guess a non-mine. I'll ask your x and y coordinates. 0, 0  at my top left. \n Positives to right and down.")
 
-            max_row_index = self.grid.width-1
-            max_col_index = self.grid.height-1
+            max_row_index = self.grid.height-1   # changes from width to heigh
+            max_col_index = self.grid.width-1    # changed from height to widht
 
             column_index = self._get_valid_coordinate(plane = 'x', max_index=max_row_index)
             row_index = self._get_valid_coordinate(plane = 'y', max_index=max_col_index)
